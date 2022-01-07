@@ -4,3 +4,10 @@ on init
     chown system system /proc/fastchg_fw_update
     write /proc/fastchg_fw_update 1
 
+# Safetynet bypass
+# Inspired in magisk source code, by topjohnwu
+# Ported to ramdisk by jhenrique09
+on boot
+    # selinux nodes, hide permissive state
+    chmod 0640 /sys/fs/selinux/enforce
+    chmod 0440 /sys/fs/selinux/policy
