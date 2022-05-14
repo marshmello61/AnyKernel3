@@ -31,6 +31,26 @@ patch_vbmeta_flag=auto;
 . tools/ak3-core.sh;
 
 
+# Patch prop for app crash due to JNI mismatch (not all roms have these props
+# so add it)
+ui_print " " "Patching system to fix some old app crash"
+patch_prop /vendor/build.prop "ro.kernel.android.checkjni" "0"
+patch_prop /vendor/build.prop "ro.kernel.checkjni" "0"
+
+# Patch prop for battery saving
+ui_print " " "Patching vendor for battery saving for ROMs that don't have"
+patch_prop /vendor/build.prop "pm.sleep_mode" "1"
+patch_prop /vendor/build.prop "power.saving.mode" "1"
+
+# Patch prop to disable post FP animation for faster unlock
+ui_print " " "Patching vendor for making FP unlock faster for ROMs that don't have"
+patch_prop /vendor/build.prop "persist.wm.enable_remote_keyguard_animation" "0"
+
+# Patch prop to enable smooth scrolling
+ui_print " " "Patching vendor to enable smooth scrolling for ROMs that don't have"
+patch_prop /vendor/build.prop "ro.vendor.perf.scroll_opt" "true"
+
+
 ## AnyKernel file attributes
 # set permissions/ownership for included ramdisk files
 set_perm_recursive 0 0 755 644 $ramdisk/*;
