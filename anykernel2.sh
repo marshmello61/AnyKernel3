@@ -47,8 +47,8 @@ ui_print " " "Patching vendor for making FP unlock faster for ROMs that don't ha
 patch_prop /vendor/build.prop "persist.wm.enable_remote_keyguard_animation" "0"
 
 # Patch prop to enable smooth scrolling
-ui_print " " "Patching vendor to enable smooth scrolling for ROMs that don't have"
-patch_prop /vendor/build.prop "ro.vendor.perf.scroll_opt" "true"
+# ui_print " " "Patching vendor to enable smooth scrolling for ROMs that don't have"
+# patch_prop /vendor/build.prop "ro.vendor.perf.scroll_opt" "true"
 
 
 ## AnyKernel file attributes
