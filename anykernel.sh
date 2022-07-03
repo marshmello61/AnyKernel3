@@ -43,8 +43,8 @@ patch_prop /vendor/build.prop "pm.sleep_mode" "1"
 patch_prop /vendor/build.prop "power.saving.mode" "1"
 
 # Patch prop to disable post FP animation for faster unlock
-ui_print " " "Patching vendor for making FP unlock faster for ROMs that don't have"
-patch_prop /vendor/build.prop "persist.wm.enable_remote_keyguard_animation" "0"
+# ui_print " " "Patching vendor for making FP unlock faster for ROMs that don't have"
+# patch_prop /vendor/build.prop "persist.wm.enable_remote_keyguard_animation" "0"
 
 # Patch prop to enable smooth scrolling
 # ui_print " " "Patching vendor to enable smooth scrolling for ROMs that don't have"
