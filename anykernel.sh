@@ -15,7 +15,7 @@ device.name2=RMX2061
 #device.name3=toroplus
 #device.name4=tuna
 #device.name5=
-supported.versions=11 - 12
+supported.versions=11 - 13
 supported.patchlevels=
 '; } # end properties
 
