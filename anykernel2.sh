@@ -1,5 +1,5 @@
-# AnyKernel3 Ramdisk Mod Script
-# osm0sis @ xda-developers
+### AnyKernel3 Ramdisk Mod Script
+## osm0sis @ xda-developers
 
 ## AnyKernel setup
 # begin properties
@@ -19,16 +19,21 @@ supported.versions=11 - 13
 supported.patchlevels=
 '; } # end properties
 
+### AnyKernel install
+# begin attributes
+attributes() {
+set_perm_recursive 0 0 755 644 $ramdisk/*;
+set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
+} # end attributes
+
 # shell variables
 block=/dev/block/bootdevice/by-name/boot
 is_slot_device=0;
 ramdisk_compression=auto;
 patch_vbmeta_flag=auto;
 
-
-## AnyKernel methods (DO NOT CHANGE)
-# import patching functions/variables - see for reference
-. tools/ak3-core.sh;
+# import functions/variables and setup patching - see for reference (DO NOT REMOVE)
+. tools/ak3-core.sh && attributes;
 
 
 # Patch prop for app crash due to JNI mismatch (not all roms have these props
@@ -51,16 +56,8 @@ patch_prop /vendor/build.prop "power.saving.mode" "1"
 # patch_prop /vendor/build.prop "ro.vendor.perf.scroll_opt" "true"
 
 
-## AnyKernel file attributes
-# set permissions/ownership for included ramdisk files
-set_perm_recursive 0 0 755 644 $ramdisk/*;
-set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
-
-
-## AnyKernel boot install
-dump_boot;
-
-# begin ramdisk changes
+# boot install
+dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_boot ramdisk
 
 # init.rc
 #backup_file init.rc;
@@ -83,7 +80,6 @@ fi;
 #patch_fstab fstab.tuna /data ext4 options "data=ordered" "nomblk_io_submit,data=writeback";
 #append_file fstab.tuna "usbdisk" fstab;
 
-# end ramdisk changes
 
 write_boot;
 ## end boot install
