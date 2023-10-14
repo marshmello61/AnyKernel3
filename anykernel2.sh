@@ -7,7 +7,7 @@ properties() { '
 kernel.string=Mello Oof Mega Omega Gawd Overlord Kernel by Mayur @marshmello_61
 do.devicecheck=1
 do.modules=1
-do.systemless=1
+do.systemless=0
 do.cleanup=1
 do.cleanuponabort=0
 device.name1=RMX2170
